@@ -34,11 +34,24 @@ else
   esac
 fi
 
+# Detect operating system
+if [ "$(uname)" == "Darwin" ]; then
+    OS_NAME="OSX"
+elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
+    OS_NAME="Linux"
+elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
+    OS_NAME="Windows"
+fi
+
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ]; then
     test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls --color=auto'
 
+    if [ "$OS_NAME" == "OSX" ]; then
+	alias ls='ls -G'
+    else
+	alias ls='ls --color=auto'
+    fi
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
