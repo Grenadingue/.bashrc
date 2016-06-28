@@ -1,0 +1,3 @@
+[submodule ".bashrc.d/whereami"]
+	path = .bashrc.d/whereami
+	url = https://github.com/Grenadingue/whereami

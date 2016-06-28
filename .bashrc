@@ -34,37 +34,23 @@ else
   esac
 fi
 
-# Detect operating system
-if [ "$(uname)" == "Darwin" ]; then
-    OS_NAME="OSX"
-elif [ "$(expr substr $(uname -s) 1 5)" == "Linux" ]; then
-    OS_NAME="Linux"
-elif [ "$(expr substr $(uname -s) 1 10)" == "MINGW32_NT" ]; then
-    OS_NAME="Windows"
+# Get information about current execution environment
+# (Like operating system, distribution, kernel, ...)
+if [ -f ~/.bashrc.d/whereami/whereami ]; then
+  . ~/.bashrc.d/whereami/whereami
 fi
 
-# enable color support of ls and also add handy aliases
-if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-
-    if [ "$OS_NAME" == "OSX" ]; then
-	alias ls='ls -G'
-    else
-	alias ls='ls --color=auto'
-    fi
-    alias grep='grep --color=auto'
-    alias fgrep='fgrep --color=auto'
-    alias egrep='egrep --color=auto'
+# Enable color support
+if [ -f ~/.bashrc.d/color/colored-base.bash ]; then
+  . ~/.bashrc.d/color/colored-base.bash
+fi
+if [ -f ~/.bashrc.d/color/colored-man.bash ]; then
+  . ~/.bashrc.d/color/colored-man.bash
 fi
 
 # Load bash git auto-completion script
 if [ -f ~/.bashrc.d/git-completion.bash ]; then
   . ~/.bashrc.d/git-completion.bash
-fi
-
-# Load colored man pages bash script
-if [ -f ~/.bashrc.d/colored-man.bash ]; then
-  . ~/.bashrc.d/colored-man.bash
 fi
 
 # My aliases
