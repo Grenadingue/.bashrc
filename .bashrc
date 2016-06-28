@@ -53,6 +53,11 @@ if [ -f ~/.bashrc.d/git-completion.bash ]; then
   . ~/.bashrc.d/git-completion.bash
 fi
 
+# Try to enable pacapt as pacman if we're not on Arch
+if [ -f ~/.bashrc.d/pacapt-enabler.bash ]; then
+  . ~/.bashrc.d/pacapt-enabler.bash
+fi
+
 # My aliases
 alias cd..='cd ..'
 alias cd...='cd ../..'
