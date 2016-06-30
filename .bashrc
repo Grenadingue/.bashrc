@@ -36,7 +36,7 @@ fi
 
 # Get information about current execution environment
 # (Like operating system, distribution, kernel, ...)
-if [ -f ~/.bashrc.d/whereami/whereami ]; then
+if [ ! $SUDO_USER ] && [ -f ~/.bashrc.d/whereami/whereami ]; then
   . ~/.bashrc.d/whereami/whereami
 fi
 
