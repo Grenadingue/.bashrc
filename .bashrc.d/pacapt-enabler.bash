@@ -1,6 +1,11 @@
 #!/bin/bash
 
-if [ "${DISTRIB}" != "Arch Linux" ]; then
+command_exists()
+{
+    command -v $1 >/dev/null 2>&1
+}
+
+if ! command_exists pacman; then
 
     if [ "${OS}" == "Microsoft Windows" ] || [ "${OS}" == "${AIX}" ] ||
        [ "${OS}" == "Unknown" ]; then
