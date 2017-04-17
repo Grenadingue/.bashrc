@@ -18,3 +18,8 @@ fi
 if [ -f ~/.bashrc.d/git-completion.bash ]; then
   . ~/.bashrc.d/git-completion.bash
 fi
+
+# The fuck
+if [ -x /usr/bin/fuck ]; then
+  eval $(thefuck --alias)
+fi

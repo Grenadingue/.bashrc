@@ -11,6 +11,8 @@ alias llr='ll -R'
 alias lar='la -R'
 alias llar='lla -R'
 
+f='fuck'
+
 # Emacs
 alias emacs='emacs -nw'
 alias ne='emacs'
