@@ -46,11 +46,9 @@ if [ -f ~/.bashrc.d/aliases.bash ]; then
 fi
 
 # Enable color support
-if [ -f ~/.bashrc.d/color/colored-base.bash ]; then
-  . ~/.bashrc.d/color/colored-base.bash
-fi
-if [ -f ~/.bashrc.d/color/colored-man.bash ]; then
-  . ~/.bashrc.d/color/colored-man.bash
+# force_color=yes # uncomment to force color support
+if [ -f ~/.bashrc.d/enable-color.bash ]; then
+  . ~/.bashrc.d/enable-color.bash
 fi
 
 # Load bash git auto-completion script
