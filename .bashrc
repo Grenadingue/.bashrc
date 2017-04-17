@@ -51,21 +51,12 @@ if [ -f ~/.baluchon.d/enable-color.bash ]; then
   . ~/.baluchon.d/enable-color.bash
 fi
 
+# Set custom prompt
+if [ -f ~/.baluchon.d/prompt.bash ]; then
+  . ~/.baluchon.d/prompt.bash
+fi
+
 # Init some shell commands
 if [ -f ~/.baluchon.d/init-commands.bash ]; then
   . ~/.baluchon.d/init-commands.bash
 fi
-
-# Define user prompt
-PROMPT_COLOR=7 # white
-
-if [ "$SESSION_TYPE" == "remote/ssh" ]; then
-  PROMPT_COLOR=2 # green
-fi
-
-if [ "$USER" == "root" ]; then
-  PROMPT_COLOR=1 # red
-fi
-
-# Custom bash prompt via kirsle.net/wizards/ps1.html
-PS1="\[$(tput bold)\]\[$(tput setaf $PROMPT_COLOR)\][\u@\h \W]\\$ \[$(tput sgr0)\]"

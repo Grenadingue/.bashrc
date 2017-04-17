@@ -1,3 +1,22 @@
+declare -A colors=(
+    ["blue"]="\033[34m"
+    ["yellow"]="\033[33m"
+    ["red"]="\033[31m"
+    ["green"]="\033[32m"
+    ["white"]="\033[97m"
+    ["magenta"]="\033[35m"
+    ["light-gray"]="\033[37m"
+    ["dark-gray"]="\033[1;30m"
+)
+
+declare -A style=(
+    ["bold"]="\e[1m"
+    ["underline"]="\033[4m"
+    ["blink"]="\033[5m"
+    ["reverse"]="\033[7m"
+    ["reset"]="\033[0m"
+)
+
 # set a fancy prompt (non-color, unless we know we "want" color)
 case "$TERM" in
   xterm-*color) color_support=yes;;
