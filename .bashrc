@@ -40,6 +40,10 @@ if [ ! $SUDO_USER ] && [ -f ~/.bashrc.d/whereami/whereami ]; then
   . ~/.bashrc.d/whereami/whereami
 fi
 
+if [ -f ~/.bashrc.d/aliases.bash ]; then
+  . ~/.bashrc.d/aliases.bash
+fi
+
 # Enable color support
 if [ -f ~/.bashrc.d/color/colored-base.bash ]; then
   . ~/.bashrc.d/color/colored-base.bash
@@ -58,30 +62,6 @@ if [ -f ~/.bashrc.d/pacapt-enabler.bash ]; then
   . ~/.bashrc.d/pacapt-enabler.bash
 fi
 
-# My aliases
-alias cd..='cd ..'
-alias cd...='cd ../..'
-
-alias l='ls'
-alias ll='ls -lh'
-alias la='ls -ah'
-alias lla='ls -lah'
-alias lr='ls -R'
-alias llr='ll -R'
-alias lar='la -R'
-alias llar='lla -R'
-
-# Emacs
-alias emacs='emacs -nw'
-alias ne='emacs'
-alias clean='rm -v *~ .*~ 2>/dev/null'
-
-# Debug
-alias objdump='objdump -M intel'
-alias gdb='gdb -ex "set disassembly-flavor intel"'
-
-# Archlinux
-alias blue='sudo systemctl restart bluetooth'
 
 # Define user prompt
 PROMPT_COLOR=7 # white
