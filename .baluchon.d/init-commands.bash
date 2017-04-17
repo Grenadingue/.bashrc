@@ -1,3 +1,8 @@
+command_exists()
+{
+    command -v $1 >/dev/null 2>&1
+}
+
 # Autoenv github.com/kennethreitz/autoenv
 if [ -f /usr/share/autoenv-git/activate.sh ]; then
   . /usr/share/autoenv-git/activate.sh
@@ -20,6 +25,15 @@ if [ -f ~/.bashrc.d/git-completion.bash ]; then
 fi
 
 # The fuck
-if [ -x /usr/bin/fuck ]; then
+if command_exists fuck; then
   eval $(thefuck --alias)
+fi
+
+# Export default editor
+if command_exists emacs; then
+  export EDITOR='emacs -nw'
+elif command_exists vim; then
+  export EDITOR='vim'
+elif command_exists vi; then
+  export EDITOR='emacs -nw'
 fi
