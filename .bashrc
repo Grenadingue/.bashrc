@@ -51,14 +51,9 @@ if [ -f ~/.bashrc.d/enable-color.bash ]; then
   . ~/.bashrc.d/enable-color.bash
 fi
 
-# Load bash git auto-completion script
-if [ -f ~/.bashrc.d/git-completion.bash ]; then
-  . ~/.bashrc.d/git-completion.bash
-fi
-
 # Init some shell commands
-if [ -f ~/.bashrc.d/commands_init.bash ]; then
-  . ~/.bashrc.d/commands_init.bash
+if [ -f ~/.bashrc.d/init-commands.bash ]; then
+  . ~/.bashrc.d/init-commands.bash
 fi
 
 # Define user prompt

@@ -13,3 +13,8 @@ fi
 if [ -f ~/.bashrc.d/pacapt-enabler.bash ]; then
   . ~/.bashrc.d/pacapt-enabler.bash
 fi
+
+# Load bash git auto-completion script
+if [ -f ~/.bashrc.d/git-completion.bash ]; then
+  . ~/.bashrc.d/git-completion.bash
+fi
