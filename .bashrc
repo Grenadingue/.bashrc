@@ -40,6 +40,7 @@ if [ ! $SUDO_USER ] && [ -f ~/.bashrc.d/whereami/whereami ]; then
   . ~/.bashrc.d/whereami/whereami
 fi
 
+# Enable handy aliases
 if [ -f ~/.bashrc.d/aliases.bash ]; then
   . ~/.bashrc.d/aliases.bash
 fi
