@@ -21,7 +21,7 @@ HISTFILESIZE=${HISTSIZE}
 shopt -s checkwinsize
 
 # Set user's bin directory path
-export PATH=$PATH:~/bin
+export PATH="$PATH:~/bin"
 
 # Source: unix.stackexchange.com/a/9607
 # Detect ssh session
