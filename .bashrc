@@ -57,11 +57,10 @@ if [ -f ~/.bashrc.d/git-completion.bash ]; then
   . ~/.bashrc.d/git-completion.bash
 fi
 
-# Try to enable pacapt as pacman if we're not on Arch
-if [ -f ~/.bashrc.d/pacapt-enabler.bash ]; then
-  . ~/.bashrc.d/pacapt-enabler.bash
+# Init some shell commands
+if [ -f ~/.bashrc.d/commands_init.bash ]; then
+  . ~/.bashrc.d/commands_init.bash
 fi
-
 
 # Define user prompt
 PROMPT_COLOR=7 # white
