@@ -28,10 +28,11 @@ if [ -f ~/.baluchon.d/session-detection.bash ]; then
   . ~/.baluchon.d/session-detection.bash
 fi
 
-# Get information about current execution environment
+# Retrieve and print informations about current execution environment
 # (Like operating system, distribution, kernel, ...)
 if [ ! $SUDO_USER ] && [ -f ~/.baluchon.d/whereami/whereami ]; then
   . ~/.baluchon.d/whereami/whereami
+  echo "Shell: $SHELL"
 fi
 
 # Enable handy aliases
