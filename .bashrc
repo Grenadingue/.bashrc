@@ -36,24 +36,24 @@ fi
 
 # Get information about current execution environment
 # (Like operating system, distribution, kernel, ...)
-if [ ! $SUDO_USER ] && [ -f ~/.bashrc.d/whereami/whereami ]; then
-  . ~/.bashrc.d/whereami/whereami
+if [ ! $SUDO_USER ] && [ -f ~/.baluchon.d/whereami/whereami ]; then
+  . ~/.baluchon.d/whereami/whereami
 fi
 
 # Enable handy aliases
-if [ -f ~/.bashrc.d/aliases.bash ]; then
-  . ~/.bashrc.d/aliases.bash
+if [ -f ~/.baluchon.d/aliases.bash ]; then
+  . ~/.baluchon.d/aliases.bash
 fi
 
 # Enable color support
 # force_color=yes # uncomment to force color support
-if [ -f ~/.bashrc.d/enable-color.bash ]; then
-  . ~/.bashrc.d/enable-color.bash
+if [ -f ~/.baluchon.d/enable-color.bash ]; then
+  . ~/.baluchon.d/enable-color.bash
 fi
 
 # Init some shell commands
-if [ -f ~/.bashrc.d/init-commands.bash ]; then
-  . ~/.bashrc.d/init-commands.bash
+if [ -f ~/.baluchon.d/init-commands.bash ]; then
+  . ~/.baluchon.d/init-commands.bash
 fi
 
 # Define user prompt

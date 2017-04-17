@@ -1,6 +1,6 @@
 [submodule ".bashrc.d/whereami"]
-	path = .bashrc.d/whereami
+	path = .baluchon.d/whereami
 	url = https://github.com/Grenadingue/whereami
 [submodule ".bashrc.d/pacapt"]
-	path = .bashrc.d/pacapt
+	path = .baluchon.d/pacapt
 	url = https://github.com/icy/pacapt
