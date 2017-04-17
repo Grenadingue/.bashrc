@@ -280,18 +280,18 @@ save_home_file()
     if [ "${filename}" != "." ] && [ "${filename}" != ".." ]; then
 	file_to_save="${HOME}/${filename}"
 	if [ -e "${file_to_save}" ] || [ -d "${file_to_save}" ]; then
-	    echo "${file_to_save} -> ${home_save}/${filename}"
-	    # if ! mv -v "${file_to_save}" "${home_save}/${filename}"; then
-	    # 	error "unable to move file"
-	    # 	home_save_error=1
-	    # fi
+	    # echo "${file_to_save} -> ${home_save}/${filename}"
+	    if ! mv "${file_to_save}" "${home_save}/${filename}"; then
+		error "unable to move file"
+		home_save_error=1
+	    fi
+	    ls -l "${home_save}"
 	fi
     fi
 }
 
 save_current_home()
 {
-    home_save="${HOME}/.home.save"
     if ! mkdir -p "${home_save}"; then
 	error "unable to create home configuration save directory"
 	return 1
@@ -306,25 +306,28 @@ save_current_home()
     return $home_save_error
 }
 
+action "Saving current home configuration"
+home_save="${HOME}/.home.save"
+save=0
 if [ -d "${home_save}" ]; then
     info "home configuration save directory already exists"
     if ! ask_yes_no "Redo home save operation? Not recommended."; then
+	save=1
 	success "aborted"
-	return 0
     fi
 fi
-
-action "Saving current home configuration"
-if ! save_current_home; then
-    error "unable to save current home configuration"
-    exit 1
+if [ $save -eq 0 ]; then
+    if ! save_current_home; then
+	error "unable to save current home configuration"
+	exit 1
+    fi
+    info "${home_save}"
+    success "Previous home configuration saved"
 fi
-info "${home_save}"
-success "Previous home configuration saved"
 
 action "Deploy baluchon in user home directory"
-if ! ls -a "${repository_path}/"; then
-# if ! mv -v "${repository_path}/"* "${HOME}" || ! mv -v "${repository_path}/."* "${HOME}"; then
+# if ! ls -a "${repository_path}/"; then
+if ! cp -r "${repository_path}/." "${HOME}"; then
     error "unable to deploy baluchon in user home"
     exit 1
 fi
