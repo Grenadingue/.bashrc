@@ -322,7 +322,7 @@ if [ $save -eq 0 ]; then
 	exit 1
     fi
     info "${home_save}"
-    success "Previous home configuration saved"
+    success "previous home configuration saved"
 fi
 
 action "Deploy baluchon in user home directory"
@@ -331,7 +331,7 @@ if ! cp -r "${repository_path}/." "${HOME}"; then
     error "unable to deploy baluchon in user home"
     exit 1
 fi
-success "Baluchon deployed"
+success "baluchon deployed"
 
 action "Performing full repository update"
 if [ ! -x "${HOME}/.baluchon.d/baluchon-updater.sh" ]; then
