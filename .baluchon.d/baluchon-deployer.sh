@@ -333,8 +333,20 @@ if ! cp -r "${repository_path}/." "${HOME}"; then
 fi
 success "Baluchon deployed"
 
-# dans ${HOME}/bin
-# faire une commande baluchon-update
-# voir README.md
-# appeler baluchon update a la fin de ce script
-# proposer a l'utilisateur de sourcer le script?
+action "Performing full repository update"
+if [ ! -x "${HOME}/.baluchon.d/baluchon-updater.sh" ]; then
+  error "unable to find updater script"
+  exit 1
+elif ! "${HOME}/.baluchon.d/baluchon-updater.sh"; then
+  error "unable to perform repository update"
+  exit 1
+fi
+success "repository updated"
+
+action "Informing user"
+success "baluchon successfully deployed"
+info "in order to activate it"
+info "execute #   source ${HOME}/.bashrc"
+info "or just start a new shell"
+
+exit 0
