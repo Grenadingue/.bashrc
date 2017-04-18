@@ -4,3 +4,6 @@
 [submodule ".bashrc.d/pacapt"]
 	path = .baluchon.d/pacapt
 	url = https://github.com/icy/pacapt
+[submodule ".emacs.d/arduino-mode"]
+	path = .emacs.d/arduino-mode
+	url = https://github.com/bookest/arduino-mode.git
