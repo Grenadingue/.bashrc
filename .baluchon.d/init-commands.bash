@@ -35,5 +35,5 @@ if command_exists emacs; then
 elif command_exists vim; then
   export EDITOR='vim'
 elif command_exists vi; then
-  export EDITOR='emacs -nw'
+  export EDITOR='vi'
 fi
