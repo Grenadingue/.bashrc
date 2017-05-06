@@ -26,7 +26,7 @@ fi
 
 # The fuck
 if command_exists fuck; then
-  eval $(thefuck --alias)
+  eval $(thefuck --alias) &
 fi
 
 # Export default editor
