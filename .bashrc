@@ -32,8 +32,9 @@ fi
 # (Like operating system, distribution, kernel, ...)
 if [ ! $SUDO_USER ] && [ -f ~/.baluchon.d/whereami/whereami ]; then
   . ~/.baluchon.d/whereami/whereami
-  SHELL_INFOS=`$(which $0) --version | head -n 1`
-  echo "Shell: $SHELL_INFOS"
+  CURRENT_SHELL=`if [[ "$0" == /* ]]; then which $0; else echo $SHELL; fi`
+  SHELL_INFOS=`"$CURRENT_SHELL" --version | head -n 1`
+  echo "Shell: $CURRENT_SHELL: $SHELL_INFOS"
 fi
 
 # Enable handy aliases
