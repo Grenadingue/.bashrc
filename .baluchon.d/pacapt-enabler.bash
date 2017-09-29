@@ -15,7 +15,7 @@ if ! command_exists pacman; then
 
     mkdir -p ~/bin
     if [ ! -f ~/bin/pacman ]; then
-	ln -s ~/.bashrc.d/pacapt/pacapt ~/bin/pacman
+	ln -s ~/.baluchon.d/pacapt/pacapt ~/bin/pacman
     fi
 
 fi
