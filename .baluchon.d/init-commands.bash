@@ -13,6 +13,15 @@ if [ -f /usr/share/nvm/init-nvm.sh ]; then
   source /usr/share/nvm/init-nvm.sh
 fi
 
+# Ruby rbenv
+if command_exists rbenv; then
+  user_rbenv_path="$HOME/.rbenv/bin"
+  if [ -d ${user_rbenv_path} ]; then
+    export PATH="$PATH:$HOME/.rbenv/bin"
+  fi
+  eval "$(rbenv init -)"
+fi
+
 # Archlinux pacman like package manager wrapper
 # Try to enable pacapt as pacman if we're not on Arch
 if [ -f ~/.baluchon.d/pacapt-enabler.bash ]; then
