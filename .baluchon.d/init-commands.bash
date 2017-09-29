@@ -25,7 +25,7 @@ if [ -f ~/.baluchon.d/git-completion.bash ]; then
 fi
 
 # The fuck
-if command_exists fuck; then
+if command_exists thefuck; then
   eval $(thefuck --alias) &
 fi
 
