@@ -42,8 +42,11 @@ if [ -f ~/.baluchon.d/aliases.bash ]; then
   . ~/.baluchon.d/aliases.bash
 fi
 
+# Create a file named `force_color` in ~/.baluchon.d to force color in shell
+if [ -f ~/.baluchon.d/force_color ]; then
+  force_color=yes
+fi
 # Enable color support
-# force_color=yes # uncomment to force color support
 if [ -f ~/.baluchon.d/enable-color.bash ]; then
   . ~/.baluchon.d/enable-color.bash
 fi
