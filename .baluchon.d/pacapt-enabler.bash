@@ -7,7 +7,7 @@ command_exists()
 
 if ! command_exists pacman; then
 
-    if [ "${OS}" == "Microsoft Windows" ] || [ "${OS}" == "${AIX}" ] ||
+    if [ "${OS}" == "Microsoft Windows" ] || [ "${OS}" == "AIX" ] ||
        [ "${OS}" == "Unknown" ]; then
 	echo "Warning: nor pacman nor pacapt are available on this system"
 	return 1
