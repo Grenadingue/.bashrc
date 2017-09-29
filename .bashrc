@@ -21,7 +21,9 @@ HISTFILESIZE=${HISTSIZE}
 shopt -s checkwinsize
 
 # Set user's bin directory path
-export PATH="$PATH:~/bin"
+if [ -d "$HOME/bin" ]; then
+  export PATH="$PATH:$HOME/bin"
+fi
 
 # Current session detection (ssh...)
 if [ -f ~/.baluchon.d/session-detection.bash ]; then
