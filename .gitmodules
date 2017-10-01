@@ -1,7 +1,7 @@
-[submodule ".bashrc.d/whereami"]
+[submodule ".baluchon.d/whereami"]
 	path = .baluchon.d/whereami
 	url = https://github.com/Grenadingue/whereami
-[submodule ".bashrc.d/pacapt"]
+[submodule ".baluchon.d/pacapt"]
 	path = .baluchon.d/pacapt
 	url = https://github.com/icy/pacapt
 [submodule ".emacs.d/arduino-mode"]
