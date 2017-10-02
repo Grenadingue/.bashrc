@@ -334,10 +334,10 @@ fi
 success "baluchon deployed"
 
 action "Performing full repository update"
-if [ ! -x "${HOME}/.baluchon.d/baluchon-updater.sh" ]; then
+if [ ! -x "${HOME}/bin/baluchon-updater" ]; then
   error "unable to find updater script"
   exit 1
-elif ! "${HOME}/.baluchon.d/baluchon-updater.sh"; then
+elif ! "${HOME}/bin/baluchon-updater"; then
   error "unable to perform repository update"
   exit 1
 fi
