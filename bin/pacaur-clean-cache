@@ -1,0 +1,15 @@
+#!/bin/bash
+
+set -e
+
+for cache_directory in ~/.cache/pacaur/*/; do
+    pkg=$(basename "${cache_directory}")
+    if ! pacaur -Q "${pkg}"; then
+	echo "Removing '${pkg}' cache directory..."
+	if rm -rf "${cache_directory}"; then
+	    echo "Cache directory '${cache_directory}' removed"
+	else
+	    echo "Failed to remove cache directory '${cache_directory}'"
+	fi
+    fi
+done
