@@ -17,6 +17,31 @@ declare -A style=(
   ["reset"]="\e[0m"
 )
 
+action()
+{
+  echo -e "\n${style[bold]}${colors[blue]}# $@...${style[reset]}"
+}
+
+info()
+{
+  echo -e "${style[bold]}${colors[white]}-> ${style[reset]}$@"
+}
+
+success()
+{
+  echo -e "${style[bold]}${colors[green]}-> ${style[reset]}$@"
+}
+
+warning()
+{
+  echo -e "${style[bold]}${colors[yellow]}-> ${style[reset]}$@"
+}
+
+error()
+{
+  echo -e "${style[bold]}${colors[red]}-> ${style[reset]}$@"
+}
+
 command_exists()
 {
     command -v $1 >/dev/null 2>&1
