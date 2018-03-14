@@ -1,3 +1,8 @@
+command_exists()
+{
+    command -v $1 >/dev/null 2>&1
+}
+
 # My aliases
 alias cd..='cd ..'
 alias cd...='cd ../..'
@@ -13,10 +18,22 @@ alias llar='lla -R'
 
 alias f='fuck'
 
+# open
+if command_exists xdg-open; then
+   alias open='xdg-open'
+fi
+
 # Emacs
 alias emacs='emacs -nw'
 alias ne='emacs'
 alias clean='rm -v *~ .*~ 2>/dev/null'
+
+# Vi/Vim
+if command_exists vim; then
+    alias vi='vim'
+elif command_exists vi && ! command_exists vim; then
+    alias vim='vi'
+fi
 
 # Debug
 alias objdump='objdump -M intel'
