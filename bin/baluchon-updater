@@ -79,8 +79,12 @@ fi
 git status
 
 if ask_yes_no "Do you want to perform a repository update?"; then
-  git pull origin master && git submodule update --init
-  exit $?
+  if ! git pull origin master && git submodule update --init; then
+      exit $?
+  fi
 fi
+
+info "re-source '.bashrc' with:"
+echo "source \"${HOME}/.bashrc\""
 
 exit 0
