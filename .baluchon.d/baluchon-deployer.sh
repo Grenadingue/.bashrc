@@ -280,7 +280,6 @@ save_home_file()
     if [ "${filename}" != "." ] && [ "${filename}" != ".." ]; then
 	file_to_save="${HOME}/${filename}"
 	if [ -e "${file_to_save}" ] || [ -d "${file_to_save}" ]; then
-	    # echo "${file_to_save} -> ${home_save}/${filename}"
 	    if ! mv "${file_to_save}" "${home_save}/${filename}"; then
 		error "unable to move file"
 		home_save_error=1
@@ -326,7 +325,6 @@ if [ $save -eq 0 ]; then
 fi
 
 action "Deploy baluchon in user home directory"
-# if ! ls -a "${repository_path}/"; then
 if ! cp -r "${repository_path}/." "${HOME}"; then
     error "unable to deploy baluchon in user home"
     exit 1
