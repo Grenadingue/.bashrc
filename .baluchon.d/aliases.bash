@@ -24,7 +24,7 @@ if command_exists xdg-open; then
 fi
 
 # Emacs
-alias emacs='emacs -nw'
+alias emacs='emacs-open-at-line -nw'
 alias ne='emacs'
 alias clean='rm -v *~ .*~ 2>/dev/null'
 
