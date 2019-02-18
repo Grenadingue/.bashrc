@@ -1,0 +1,17 @@
+#!/bin/bash
+
+emacs_arguments=()
+
+for argument in "${@}"; do
+    if [[ "${argument}" == -* ]]; then
+	emacs_arguments+=("${argument}")
+    elif [[ "${argument}" == *:* ]]; then
+	argument_file="$(awk '{sub(/:[0-9]*$/,"")}1' <<< "${argument}")"
+	argument_line="$(awk '{sub(/^.*:/,"")}1' <<< "${argument}")"
+	emacs_arguments+=("+${argument_line}" "${argument_file}")
+    else
+	emacs_arguments+=("${argument}")
+    fi
+done
+
+emacs "${emacs_arguments[@]}"
