@@ -1,0 +1,5 @@
+# mappings for "page up" and "page down" to step to the beginning/end
+# of the history
+"\e[5~": history-search-backward
+"\e[6~": history-search-forward
+"\C-x\C-r": re-read-init-file
