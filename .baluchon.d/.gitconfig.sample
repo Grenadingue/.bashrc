@@ -1,14 +1,124 @@
+# This is a ~/.gitconfig sample configuration file.
+#
+# You cannot use it as is. Follow these instructions:
+# 1/ First copy it to ~/.gitconfig
+# 2/ Search for FIXME in the file and adjust some value to your needs.
+
 [user]
 	name = Nicolas Chauvin
 	email = chauvin.nico@gmail.com
-
+[core]
+        editor = emacs -nw
+        # excludesfile = /home/login_name/.gitignore #FIXME
 [color]
 	diff = auto
         status = auto
         branch = auto
         interactive = auto
+	grep = auto
         ui = true
         pager = true
+[alias]
+        # Some shortcuts.
+        st = status
+        ci = commit
+        co = checkout
+        cfg = config
+        # Branch.
+        br = branch
+        bra = branch -a
+	braa = "!sh -c 'git for-each-ref --color=always --format=\"%1B[0;34m%(committerdate)%1B[m %09 %1B[0;32m%(authorname)%1B[m %09%09 %(refname)\" | grep --color=never -a -v \"refs/tags/\" | sort -k5n -k2M -k3n -k4n | tac | less -R'"
+        # Fetch.
+        f = fetch
+        fa = fetch --all
+        fap = fetch --all --prune
+        fapt = fetch --all --prune --tags
+        # Remote.
+        r = remote
+        # Log.
+        l = log -C --stat
+        lp = log -C --stat --ignore-space-change -p
+        # Diff only the local change not yet added into the index.
+        dif = diff -C -w
+        # Similar to dif but with word-diff.
+        difw = diff -C --ignore-space-change --word-diff=color
+        # Diff only the change added into the index.
+        difi = diff -C --cached --ignore-space-change
+        # Similar to difi but with word-diff.
+        difiw = diff -C --ignore-space-change --cached --word-diff=color
+        # Make a diff applyable with patch -p0
+        diffp = diff --no-color -p --no-prefix --no-renames
+        # Current branch
+        cbr = !"f() { git branch --no-color | sed -ne '/^\\* */s///p'; }; f"
+        # Remote upstream.
+        rup = !"f() { b=`git cbr` && git config --get branch.$b.remote; }; f"
+        # Upstream branch.
+        ubr = !"f() { b=`git cbr` && r=`git rup` && rb=`git config --get branch.$b.merge` && echo $r/${rb#refs/heads/}; }; f"
+        # Diff and log between the origin server and the local current branch.
+        rdiff = !"f() { b=`git cbr` && u=`git ubr` && git dif $u..$b; }; f"
+        rlog = !"f() { b=`git cbr` && u=`git ubr` && git log $u..$b; }; f"
+        rlogp = !"f() { b=`git cbr` && u=`git ubr` && git log -p $u..$b; }; f"
+        # Diff and log between the local current branch and the origin server.
+        ndiff = !"f() { b=`git cbr` && u=`git ubr` && git dif $b..$u; }; f"
+        nlog = !"f() { b=`git cbr` && u=`git ubr` && git log $b..$u; }; f"
+        nlogp = !"f() { b=`git cbr` && u=`git ubr` && git log -p $b..$u; }; f"
+        # Push only the current branch on the origin server.
+        pushc = !"f() { b=`git cbr` && r=`git rup` && git push $r $b; }; f"
+        pushfc = !"f() { b=`git cbr` && r=`git rup` && git push -f $r $b; }; f"
+        # Submodules.
+        sm = submodule
+        # Initialize and update submodules recursively.
+        smup = submodule update --init --recursive
+        # Recursive status of the submodules.
+        smst = submodule status --recursive
+[help]
+        format = man
+[branch]
+        autosetuprebase = always
+[rebase]
+        autosquash = true
+[fetch]
+        recurseSubmodules = on-demand
+[push]
+        default = nothing
+[merge]
+        # Use --ff if your really want your merge to be fast-forward.
+        ff = false
+        # Use --no-log if you really don't want the log to be part of the
+        # commit message.
+        log = 100000
+[mergetool]
+        prompt = false
+        keepTemporaries = false
+        keepBackup = true
+[diff]
+        renames = copies
+        ignoreSubmodules = none
+[difftool]
+        prompt = false
 
-[core]
-	editor = emacs -nw
+# If you want to use specific diff tools for merging and viewing diff such as
+# kdiff3 uncomment the followin configuration lines.
+# (see 'git help difftool' for further information)
+#
+# [diff]
+#         tool = kdiff3
+# [merge]
+#         tool = kdiff3
+
+
+# If you want to use diffuse as diff tools for merging and diffing uncomment
+# the following lines:
+#
+# [diff]
+#         tool = diffuse
+# [merge]
+#         tool = diffuse
+
+# If you want to use Beyond Compare for merging and diffing uncomment the
+# following lines:
+#
+# [diff]
+#         tool = bc3
+# [merge]
+#         tool = bc3
