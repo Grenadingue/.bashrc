@@ -36,6 +36,10 @@ fi
 # The fuck
 if command_exists thefuck; then
   eval $(thefuck --alias) &
+
+# Pacman AUR wrapper
+if command_exists yay; then
+  alias yay='yay --answerdiff All'
 fi
 
 # Export default editor
