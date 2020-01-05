@@ -36,6 +36,7 @@ fi
 # The fuck
 if command_exists thefuck; then
   eval $(thefuck --alias) &
+fi
 
 # Pacman AUR wrapper
 if command_exists yay; then
