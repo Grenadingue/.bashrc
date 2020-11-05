@@ -16,6 +16,9 @@ alias llr='ll -R'
 alias lar='la -R'
 alias llar='lla -R'
 
+_mkcd() { mkdir -p "${@}" && cd "${@}"; }
+alias mkcd='_mkcd'
+
 alias f='fuck'
 
 # open
