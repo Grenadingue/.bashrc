@@ -22,6 +22,16 @@ if command_exists rbenv; then
   eval "$(rbenv init -)"
 fi
 
+# Ruby RVM
+if [[ -s "$HOME/.rvm/scripts/rvm" ]]; then
+    ## Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+    export PATH="$PATH:$HOME/.rvm/bin"
+    ## Load RVM into a shell session *as a function*
+    source "$HOME/.rvm/scripts/rvm"
+    ## Load autocompetion
+    [[ -r "$HOME/.rvm/scripts/completion" ]] && source "$HOME/.rvm/scripts/completion"
+fi
+
 # Archlinux pacman like package manager wrapper
 # Try to enable pacapt as pacman if we're not on Arch
 if [ -f ~/.baluchon.d/pacapt-enabler.bash ]; then
