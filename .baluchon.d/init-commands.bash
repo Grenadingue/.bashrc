@@ -48,6 +48,11 @@ if command_exists thefuck; then
   eval $(thefuck --alias) &
 fi
 
+# Flutter
+if command_exists flutter && command_exists chromium; then
+  export CHROME_EXECUTABLE="$(which chromium)"
+fi
+
 # Pacman AUR wrapper
 if command_exists yay; then
   alias yay='yay --answerdiff All'
