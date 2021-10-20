@@ -58,3 +58,18 @@
 ;; https://github.com/spotify/dockerfile-mode
 (require 'dockerfile-mode)
 (add-to-list 'auto-mode-alist '("Dockerfile" . dockerfile-mode))
+
+;; Enable upper/lower case functionalities
+;; https://www.gnu.org/software/emacs/manual/html_node/emacs/Case.html
+;; https://kb.iu.edu/d/abis
+;;;; NOTES:
+;;;; - Select region and convert it
+;;;;   To upper case: M-x upcase-region OR C-x C-u
+;;;;   To lower case: M-x downcase-region OR C-x C-l
+;;;;   Capitalize: M-x capitalize-region
+;;;; - Convert the following word
+;;;;   To upper case: M-u
+;;;;   To lower case: M-l
+;;;;   Capitalize: M-c
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
