@@ -1,5 +1,8 @@
 ;; .myemacs
 
+;; configure colors for a terminal with dark background
+(setq frame-background-mode 'dark)
+
 (add-to-list 'load-path "~/.emacs.d/s")
 (add-to-list 'load-path "~/.emacs.d/ocaml")
 (add-to-list 'load-path "~/.emacs.d/sym-lock")
