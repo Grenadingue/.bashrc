@@ -57,3 +57,12 @@ if alias man 2>&1 1>/dev/null; then
 else
   alias man='LESS=+Gg man'
 fi
+
+# ydiff
+function _alias_diff_colored_words_two_panels() {
+  echo + diff -u "${@}" \| ydiff -w 0 -s 1>&2
+  command diff -u "${@}" | ydiff -w 0 -s
+}
+if command_exists ydiff; then
+  alias diff='_alias_diff_colored_words_two_panels'
+fi
