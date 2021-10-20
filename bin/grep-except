@@ -1,0 +1,49 @@
+#!/bin/bash
+
+set -e
+
+invokation_name="${0}"
+
+options=(--color=always)
+files=()
+find_pattern=""
+find_pattern_found=false
+except_pattern=""
+except_pattern_found=false
+
+function usage() {
+  echo "usage: ${invokation_name} [OPTION...] <FIND_PATTERN> <EXCEPT_PATTERN> [FILE...]" 2>&1
+}
+
+function parse_arguments() {
+  for argument in "${@}"; do
+    if [[ ${argument} == -* ]]; then
+      options+=("${argument}")
+    elif ${find_pattern_found} && ${except_pattern_found}; then
+      files+=("${argument}")
+    elif ! ${find_pattern_found}; then
+      find_pattern="${argument}"
+      find_pattern_found=true
+    elif ! ${except_pattern_found}; then
+      except_pattern="${argument}"
+      except_pattern_found=true
+    fi
+  done
+
+  if ! ${find_pattern_found}; then
+    echo "${invokation_name}: <FIND_PATTERN> not found" 2>&1
+    usage "${invokation_name}"
+    return 1
+  elif ! ${except_pattern_found}; then
+    echo "${invokation_name}: <EXCEPT_PATTERN> not found" 2>&1
+    usage "${invokation_name}"
+    return 1
+  fi
+}
+
+function grep_except() {
+  grep "${options[@]}" "${find_pattern}" "${files[@]}" | grep -vE "${except_pattern}"
+}
+
+parse_arguments "${@}"
+grep_except
