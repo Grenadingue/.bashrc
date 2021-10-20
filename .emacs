@@ -3,6 +3,24 @@
 ;; configure colors for a terminal with dark background
 (setq frame-background-mode 'dark)
 
+;; configure indentation settings
+;;;; define custom variables
+(setq default-tab-width 2)
+(setq show-tab-as-width 4)
+(setq python-tab-width 4)
+;;;; configure default settings
+;;;;;; do not use \t character, so implicitly tells to use spaces
+(setq-default indent-tabs-mode nil)
+;;;;;; indent with `tab-width` spaces
+(setq-default tab-width default-tab-width)
+;;;;;; use the size of `tab-width` spaces to represent 1 \t
+(setq tab-stop-list (number-sequence show-tab-as-width 200 show-tab-as-width))
+;;;; configure settings per language/mode
+;;;; NOTE: Unfortunately emacs does not allow force configuring a global setting
+(add-hook 'c-mode-common-hook '(lambda () (setq c-basic-offset default-tab-width))) ; c, c++, java, objective-c, idl, pike, awk
+(add-hook 'sh-mode-hook '(lambda () (setq sh-basic-offset default-tab-width))) ; sh, bash, etc
+(add-hook 'python-mode-hook '(lambda () (setq python-indent python-tab-width))) ; python
+
 (add-to-list 'load-path "~/.emacs.d/s")
 (add-to-list 'load-path "~/.emacs.d/ocaml")
 (add-to-list 'load-path "~/.emacs.d/sym-lock")
