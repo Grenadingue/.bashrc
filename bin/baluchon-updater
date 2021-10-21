@@ -83,7 +83,9 @@ if ask_yes_no "Do you want to see diffs?" && \
   exit $?
 fi
 
+user_asked_to_stash=false
 if ask_yes_no "Do you want to stash diffs?" && \
+    user_asked_to_stash=true && \
     ( ( ! git stash list ) || ( ! git stash ) ); then
   exit $?
 fi
@@ -93,7 +95,8 @@ if ask_yes_no "Do you want to update repository and sub-modules?" && \
   exit $?
 fi
 
-if ask_yes_no "Do you want to pop stash diffs?" && \
+if ${user_asked_to_stash} &&\
+    ask_yes_no "Do you want to pop stashed diffs?" && \
     ( ( ! git stash show -p 0 ) || ( ! git stash pop ) ); then
   exit $?
 fi
