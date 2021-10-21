@@ -39,8 +39,8 @@ if [ -f ~/.baluchon.d/pacapt-enabler.bash ]; then
 fi
 
 # Load bash git auto-completion script
-if [ -f ~/.baluchon.d/git-completion.bash ]; then
-  . ~/.baluchon.d/git-completion.bash
+if [ -f /usr/share/git/completion/git-completion.bash ]; then
+  . /usr/share/git/completion/git-completion.bash
 fi
 
 # The fuck
