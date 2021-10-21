@@ -49,12 +49,25 @@ command_exists()
 
 ask_yes_no()
 {
-  answer=""
+  local default_answer="${1}"
+  local possible_answers="y/n"
+  local answer=""
+
+  shift
+
+  case "${default_answer}" in
+    [Y]* ) possible_answers="Y/n";;
+    [N]* ) possible_answers="y/N";;
+  esac
+
   while true; do
-    echo -en "${style[bold]}${colors[blue]}-> ${style[reset]}$@ [y/n] "
+    echo -en "${style[bold]}${colors[blue]}-> ${style[reset]}$@ [${possible_answers}] "
     read -p "" answer
     if [ "${answer}" == "" ]; then
-      answer="y";
+      case "${default_answer}" in
+        [Y]* ) return 0;;
+        [N]* ) return 1;;
+      esac
     fi
     case $answer in
       [Yy]* ) return 0;;
