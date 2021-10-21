@@ -6,7 +6,7 @@
 
 [user]
 	name = Nicolas Chauvin
-	email = chauvin.nico@gmail.com
+	email = nicolas-dev@chauv.in
 [core]
         editor = emacs -nw
         # excludesfile = /home/login_name/.gitignore #FIXME
