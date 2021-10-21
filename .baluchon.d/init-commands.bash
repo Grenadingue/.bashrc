@@ -66,3 +66,9 @@ elif command_exists vim; then
 elif command_exists vi; then
   export EDITOR='vi'
 fi
+
+# Fuzzy Finding
+if command_exists fzf; then
+  . /usr/share/fzf/key-bindings.bash
+  . /usr/share/fzf/completion.bash
+fi
