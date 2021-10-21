@@ -5,17 +5,17 @@
 # 2/ Search for FIXME in the file and adjust some value to your needs.
 
 [user]
-	name = Nicolas Chauvin
-	email = nicolas-dev@chauv.in
+        name = Nicolas Chauvin
+        email = nicolas-dev@chauv.in
 [core]
         editor = emacs -nw
         # excludesfile = /home/login_name/.gitignore #FIXME
 [color]
-	diff = auto
+        diff = auto
         status = auto
         branch = auto
         interactive = auto
-	grep = auto
+        grep = auto
         ui = true
         pager = true
 [alias]
@@ -27,7 +27,7 @@
         # Branch.
         br = branch
         bra = branch -a
-	braa = "!sh -c 'git for-each-ref --color=always --format=\"%1B[0;34m%(committerdate)%1B[m %09 %1B[0;32m%(authorname)%1B[m %09%09 %(refname)\" | grep --color=never -a -v \"refs/tags/\" | sort -k5n -k2M -k3n -k4n | tac | less -R'"
+        braa = "!sh -c 'git for-each-ref --color=always --format=\"%1B[0;34m%(committerdate)%1B[m %09 %1B[0;32m%(authorname)%1B[m %09%09 %(refname)\" | grep --color=never -a -v \"refs/tags/\" | sort -k5n -k2M -k3n -k4n | tac | less -R'"
         # Fetch.
         f = fetch
         fa = fetch --all
