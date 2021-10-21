@@ -39,11 +39,6 @@ if [ ! $SUDO_USER ] && [ -f ~/.baluchon.d/whereami/whereami ]; then
   echo "Shell: $CURRENT_SHELL: $SHELL_INFOS"
 fi
 
-# Enable handy aliases
-if [ -f ~/.baluchon.d/aliases.bash ]; then
-  . ~/.baluchon.d/aliases.bash
-fi
-
 # Create a file named `force_color` in ~/.baluchon.d to force color in shell
 if [ -f ~/.baluchon.d/force_color ]; then
   force_color=yes
@@ -61,4 +56,9 @@ fi
 # Init some shell commands
 if [ -f ~/.baluchon.d/init-commands.bash ]; then
   . ~/.baluchon.d/init-commands.bash
+fi
+
+# Enable handy aliases
+if [ -f ~/.baluchon.d/aliases.bash ]; then
+  . ~/.baluchon.d/aliases.bash
 fi
