@@ -91,25 +91,33 @@ fi
 
 git status
 
-if ask_yes_no "Do you want to see diffs?" && \
+if git_status=$(git status --porcelain) && [ -z "${git_status}" ]; then
+  # working directory is clean
+  default_answer="N"
+else
+  # uncommited changes
+  default_answer="Y"
+fi
+
+if ask_yes_no "${default_answer}" "Do you want to see diffs?" && \
     ! git diff; then
   exit $?
 fi
 
 user_asked_to_stash=false
-if ask_yes_no "Do you want to stash diffs?" && \
+if ask_yes_no "${default_answer}" "Do you want to stash diffs?" && \
     user_asked_to_stash=true && \
     ( ( ! git stash list ) || ( ! git stash ) ); then
   exit $?
 fi
 
-if ask_yes_no "Do you want to update repository and sub-modules?" && \
+if ask_yes_no "Y" "Do you want to update repository and sub-modules?" && \
     ( ( ! git pull --rebase origin master ) || ( ! git submodule update --init ) ); then
   exit $?
 fi
 
 if ${user_asked_to_stash} &&\
-    ask_yes_no "Do you want to pop stashed diffs?" && \
+    ask_yes_no "${default_answer}" "Do you want to pop stashed diffs?" && \
     ( ( ! git stash show -p 0 ) || ( ! git stash pop ) ); then
   exit $?
 fi
