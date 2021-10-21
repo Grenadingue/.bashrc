@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 tmp_dir="/tmp/baluchon-deployer"
 
