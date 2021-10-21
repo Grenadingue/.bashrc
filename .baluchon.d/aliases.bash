@@ -48,3 +48,12 @@ alias dd='dd status=progress'
 
 # Archlinux
 alias blue='sudo systemctl restart bluetooth'
+
+# Man
+## Force always showing line number and percentage
+## https://askubuntu.com/questions/905322/man-pages-how-to-always-show-total-lines-and-percentage-in-the-bottom-status
+if alias man 2>&1 1>/dev/null; then
+  alias man="LESS=+Gg $(alias man | cut -d\' -f2)"
+else
+  alias man='LESS=+Gg man'
+fi
